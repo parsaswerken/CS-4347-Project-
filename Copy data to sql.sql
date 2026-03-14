@@ -38,10 +38,15 @@ FROM 'C:\Users\neonz\Desktop\CS4347\Project Files\FLIGHT_LEG(1).csv'
 DELIMITER ','
 CSV HEADER;
 
-COPY leg_instance(flightnumber, legnumber, date, airplaneflightid)
+ALTER TABLE leg_instance
+ADD availableseats VARCHAR(50) NOT NULL,
+ADD DepartureTime TIME NOT NULL,
+ADD ArrivalTime TIME NOT NULL;
+COPY leg_instance(flightnumber, legnumber, date, availableseats, airplaneflightid, DepartureTime, ArrivalTime)
 FROM 'C:\Users\neonz\Desktop\CS4347\Project Files\LEG_INSTANCE(1).csv'
 DELIMITER ','
 CSV HEADER;
+SELECT * FROM leg_instance;
 
 COPY seat(flightid, seatnumber, class)
 FROM 'C:\Users\neonz\Desktop\CS4347\Project Files\SEAT(1).csv'
